@@ -1,0 +1,58 @@
+// components/nft-card.tsx
+import React from 'react';
+import { translateHeroName } from '@/lib/name-translator';
+
+const NftCard = ({ name, locale }) => {
+  const displayName = locale === 'zh' ? name : translateHeroName(name, 'en');
+  return (
+    <div>
+      <img src="/path/to/image" alt={displayName} />
+      {/* rest of code here */}
+    </div>
+  );
+};
+
+export default NftCard;
+
+// app/mint/page.tsx
+import React from 'react';
+import { translateHeroName } from '@/lib/name-translator';
+
+function displayHeroName(
+  hero: { tokenId?: number; id: string; name: string },
+  locale: string,
+  t: (k: string) => string
+) {
+  if (locale === 'zh') return hero.name;
+  // Translate Chinese hero/class names to English; fall back to provided name or generic if missing
+  const base = hero.name || `${t('common.hero')} #${hero.tokenId ?? hero.id.slice(-4)}`;
+  return translateHeroName(base, 'en');
+}
+
+const MintPage = () => {
+  // rest of code here
+  return <div>Mint Page</div>;
+};
+
+export default MintPage;
+
+// app/staking/page.tsx
+import React from 'react';
+import { translateHeroName } from '@/lib/name-translator';
+
+function displayHeroName(
+  hero: { tokenId?: number; id: string; name: string },
+  locale: string,
+  t: (k: string) => string
+) {
+  if (locale === 'zh') return hero.name;
+  const base = hero.name || `${t('common.hero')} #${hero.tokenId ?? hero.id.slice(-4)}`;
+  return translateHeroName(base, 'en');
+}
+
+const StakingPage = () => {
+  // rest of code here
+  return <div>Staking Page</div>;
+};
+
+export default StakingPage;

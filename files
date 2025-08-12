@@ -1,0 +1,53 @@
+// app/page.tsx
+import React from 'react';
+
+const Page = () => {
+return (
+  <div>
+    <button onClick={() => window.open('https://four.meme/zh-TW/token/0x6ab88be9d02bfeb0896cd0bce419d4caf5124444', '_blank')}>
+      Buy
+    </button>
+    {/* /** rest of code here **/ */}
+  </div>
+);
+};
+
+export default Page;
+
+// app/wallet/page.tsx
+import React from 'react';
+
+const WalletPage = () => {
+return (
+  <div>
+    <button onClick={() => window.open('https://four.meme/zh-TW/token/0x6ab88be9d02bfeb0896cd0bce419d4caf5124444', '_blank')}>
+      FOUR.MEME
+    </button>
+    {/* /** rest of code here **/ */}
+  </div>
+);
+};
+
+export default WalletPage;
+
+// lib/contracts.ts
+import { ethers } from 'ethers';
+
+export const CONTRACT_ADDRESSES = {
+// SAF token contract address (BSC)
+STG_TOKEN: '0x6ab88be9d02bfeb0896cd0bce419d4caf5124444',
+HERO_NFT: '0x0000000000000000000000000000000000000002', // replace when ready
+STAKING: '0x0000000000000000000000000000000000000003', // replace when ready
+MINT_PRICE_STG: ethers.parseEther('2000') // 2000 SAF per mint (unit label updated elsewhere)
+};
+
+// components/web3-provider.tsx
+import React from 'react';
+
+const Web3Provider = () => {
+const STG_CONTRACT_ADDRESS = '0x6ab88be9d02bfeb0896cd0bce419d4caf5124444';
+// /** rest of code here **/
+return <div>Web3 Provider Component</div>;
+};
+
+export default Web3Provider;
